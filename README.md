@@ -49,8 +49,8 @@ To use this repository clone and then deploy desired files as follows:
 
 ## Related Projects
 
-See the file [RELATED.md] for other GitHub projects attempting to extend the
-EdgeRouter + EdgeOS functionality.
+See the file [RELATED.md](RELATED.md) for other GitHub projects attempting to
+extend the EdgeRouter + EdgeOS functionality.
 
 <!-- vim: ts=2 sw=2 expandtab tw=80 :
 -->
