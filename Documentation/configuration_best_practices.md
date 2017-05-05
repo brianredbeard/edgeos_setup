@@ -4,7 +4,7 @@
 There are two schools of thought when it comes to configuration of EdgeRouter
 devices.  When going to the forums, they will want you to post your
 configuration in a very visually appealing manner (effectively the output of
-`show configuration` inside of a <PRE> block.)
+`show configuration` inside of a `<PRE>` block.)
 
 For the purposes of duplicating configurations over time, users will generally
 find the output of `show configuration commands` much more useful.  This
