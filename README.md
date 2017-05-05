@@ -46,5 +46,11 @@ To use this repository clone and then deploy desired files as follows:
  - `decrease_sshguard_attack.sh` - Change the configuration of `sshguard`
  - `install_packages.sh` - Persist additional packages across firmware upgrades
 
+
+## Related Projects
+
+See the file [RELATED.md] for other GitHub projects attempting to extend the
+EdgeRouter + EdgeOS functionality.
+
 <!-- vim: ts=2 sw=2 expandtab tw=80 :
 -->
