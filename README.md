@@ -36,7 +36,8 @@ this functionality can far exceed hardware available at 10x the price.
 To use this repository clone and then deploy desired files as follows:
 
 ```
-  $ scp -R fs/* router:/
+  $ scp -r fs router:
+  $ sudo cp -Rv fs/* /
 ```
 
 ## Contents
