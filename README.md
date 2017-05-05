@@ -6,6 +6,11 @@ This repository is a set of scripts and other utilities to improve the overal
 functioning of the Ubiquiti EdgeRouter series of devices.  These scripts are not
 maintained by Ubiquiti and are provided with no warranty expressed or implied.
 
+This repository does not replace a basic knowledge of how to navigate the EdgeOS
+CLI.  For more information on getting started with EdgeOS, consult the User
+Guide available at
+[https://www.ubnt.com/download/edgemax](https://www.ubnt.com/download/edgemax)
+
 Now, let's get down to bid'ness.
 
 The Ubiquiti EdgeRouter series of devices (included in the EdgeMax line of
