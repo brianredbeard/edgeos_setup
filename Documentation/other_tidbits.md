@@ -335,5 +335,6 @@ busybox:
 
 [of-dpa]: https://github.com/Broadcom-Switch/of-dpa
 
-# vim: ts=2 sw=2 sts=2 et tw=80 :
-
+<!--
+vim: ts=2 sw=2 sts=2 et tw=80 :
+-->
