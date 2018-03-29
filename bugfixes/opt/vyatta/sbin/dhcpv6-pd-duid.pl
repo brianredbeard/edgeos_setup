@@ -6,8 +6,21 @@ use warnings;
 use Getopt::Long;
 use Config;
 
-my $dhcp6c_duid = '/var/lib/dhcpv6/dhcp6c_duid';
+# my $dhcp6c_duid = '/var/lib/dhcpv6/dhcp6c_duid';
+my $dhcp6c_duid = '';
+
+### 
+# Initial debugging block for being able to do testing to isolate the behavior.
+#  This block should be removed before attempting to send this back to Ubiquiti. 
+###
+if (defined($ENV{'DUID_FILE'})) {
+	$dhcp6c_duid = $ENV{'DUID_FILE'};
+} else {
+	$dhcp6c_duid = '/var/lib/dhcpv6/dhcp6c_duid';
+}
                 
+print("Using File: ", $dhcp6c_duid,"\n");
+###
 
 sub show_duid {
     
