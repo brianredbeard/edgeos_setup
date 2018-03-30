@@ -130,29 +130,26 @@ sub gen_duid {
     }
     my $duid;
     my $duid_type = 1;
-    # Why is this being defined but not used?
     my $duid_intf = 6;  # ethernet
     my $duid_time = time();
     my @duid_mac = split(/:/, $mac);
-    print("DUID Length: ", length($duid), "\n");
     # Inset a null character
     $duid  = chr(0);
     # Inset ASCII Start of Header (character code 1)
     $duid .= chr($duid_type);
-    # Insert a second ASCII SOH, because why not?
+    # Insert hardware type (ethernet)
     $duid .= chr($duid_intf);
     
+    # Provide the time serialized as a 32 byte value
     for (my $i=32; $i >= 0; $i -= 8) {
 	$duid .= chr(($duid_time >> $i) & 0xff);
-	print("DUID: ", $duid, "\n");
-	}
+    }
+    
+    # Include the MAC address
     foreach my $b (@duid_mac) {
         $duid .= chr(hex($b));
-	    print("DUID Length: ", length($duid), "\n");
     }
 
-    print("DUID Length: ", length($duid), "\n");
-    print(length($duid));
     set_duid_bin($duid);
 }
 
