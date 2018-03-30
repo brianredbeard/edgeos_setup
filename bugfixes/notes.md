@@ -85,3 +85,38 @@ f7c1c471dc01688ea01daf4152c063dd5cb49fa16c9355d90cfab73d87df487c  /tmp/dhcp6c_du
 
 So there is clearly some backwards logic in this script.
 
+
+I went back to the EdgeRouter Pro-8 and dug in further on this.  I used the `--set` 
+mechanism to try and verify the behavior:
+
+```
+$ DUID_FILE=/tmp/dhcp6c_duid2  /tmp/dhcpv6-pd-duid.pl --action=set --duid='00:01:00:01:22:4d:b0:00:04:18:d6:06:61:0a'
+Using File: /tmp/dhcp6c_duid2
+```
+
+and then read it back:
+
+```
+$ DUID_FILE=/tmp/dhcp6c_duid2  /tmp/dhcpv6-pd-duid.pl --action=show
+Using File: /tmp/dhcp6c_duid2
+DUID 00:01:00:01:22:4d:b0:00:04:18:d6:06:61:0a
+```
+
+Then, performing the `hexdump`, we see the following:
+
+```
+$ hexdump /tmp/dhcp6c_duid2
+0000000 000e 0001 0001 224d b000 0418 d606 610a
+0000010
+```
+
+Thus, across platforms we see this breakdown (all when using DUID 
+`00:01:00:01:22:4d:b0:00:04:18:d6:06:61:0a`):
+
+| Platform         | CPU    | Endianess | Output                                    |
+| ---              | ---    | ---       | ---                                       |
+| Laptop           | AMD64  | Little    | `000e 0100 0100 4d22 00b0 1804 06d6 0a61` |
+| EdgeRouter X     | MIPS64 | Little    | `000e 0100 0100 4d22 00b0 1804 06d6 0a61` |
+| Edgerouter Pro 8 | MIPS64 | Big       | `000e 0001 0001 224d b000 0418 d606 610a` |
+
+
