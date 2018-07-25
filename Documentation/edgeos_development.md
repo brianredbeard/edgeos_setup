@@ -40,9 +40,12 @@ differential snapshot against the original user space image
 
     qemu-img create -f qcow2 -b debian_wheezy_mipsel_standard.qcow2  development.qcow2
 
-# Step 4: Run QEMU emulating the Malta chip, while supplying additional
-#  optimization and forward localhost:2022 to port 22 on the VM. 
-# press "ctrl + A, C" to enter the QEMU emulator console
+### Step 4: Run QEMU 
+
+Here we will execute a QEMU VM, emulating the Malta chip, while supplying additional
+optimization and TCP forward from localhost:2022 to port 22 on the VM. 
+
+(press "ctrl + A, C" to enter the QEMU emulator console if needed)
 
     /usr/bin/qemu-system-mipsel -M malta -kernel vmlinux-3.2.0-4-4kc-malta -hda development.qcow2 -append "root=/dev/sda1 console=ttyS0 mem=256m@0x0 mem=768m@0x90000000" -nographic -m 256 -net nic,macaddr=04:18:d6:00:00:01,model=virtio -net user,hostfwd=tcp:127.0.0.1:2022-:22
 
@@ -66,20 +69,27 @@ it's power.
     wget http://http.us.debian.org/debian/pool/main/g/golang-1.9/golang-1.9-go_1.9.2-4_mipsel.deb
     wget http://http.us.debian.org/debian/pool/main/g/golang-1.9/golang-1.9-src_1.9.2-4_mipsel.deb
 
-#   unpack binaries and rename them to the respective tarballs
+### Step 2: Unpack binaries
+Unpack binaries and rename them to the respective tarballs:
+
     ar x golang-1.9-go_1.9.2-4_mipsel.deb data.tar.xz && mv {,gobin-}data.tar.xz
     ar x golang-1.9-doc_1.9.2-4_all.deb data.tar.xz && mv {,godoc-}data.tar.xz
     ar x golang-1.9-src_1.9.2-4_mipsel.deb data.tar.xz && mv {,gosrc-}data.tar.xz
 
-#   scp binaries to the VM
+### Step 3: Copy assets to the VM
+scp binaries to the VM:
+
     scp -o "Port 2022" go*-data.tar.xz user@localhost:
 
-#  (on the VM) unpack the binaries to the correct location:
+### Step 4: Unpack binaries
+(on the VM) unpack the binaries to the correct location:
 
     sudo tar xvf gobin-data.tar.xz -C / 
     sudo tar xvf gosrc-data.tar.xz -C / 
     sudo tar xvf godoc-data.tar.xz -C /
 
+At this point you should find that Golang has been installed on the VM and is
+usable after setting `GOROOT` and `GOPATH`.
 
-mips-isa: https://en.wikipedia.org/wiki/List_of_MIPS_architecture_processors
-endianness: https://en.wikipedia.org/wiki/Endianness
+[mips-isa]: https://en.wikipedia.org/wiki/List_of_MIPS_architecture_processors
+[endianness]: https://en.wikipedia.org/wiki/Endianness
