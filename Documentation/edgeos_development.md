@@ -91,5 +91,16 @@ scp binaries to the VM:
 At this point you should find that Golang has been installed on the VM and is
 usable after setting `GOROOT` and `GOPATH`.
 
+## Attribution:
+
+This work stands on the shoulders of the work of 
+[Aurélien Jarno](https://www.aurel32.net).  Aurélien has been involved with the
+Debian libc team and has done a lot of work around MIPS & Real Time Operating
+Systems currently doing commits on the [Zephyr Project](https://www.zephyrproject.org).
+uou can continue stalking him on Github here: [aurel32](https://github.com/aurel32).
+
+(According to his CV) He continues his work over the last decade as a research
+engineer at [Centre de Recherche Astrophysique de Lyon](https://cral.univ-lyon1.fr/?lang=en)
+
 [mips-isa]: https://en.wikipedia.org/wiki/List_of_MIPS_architecture_processors
 [endianness]: https://en.wikipedia.org/wiki/Endianness
