@@ -13,7 +13,7 @@ when trying to identify sections as well as something that is easily processed
 using the command `source` on the CLI or even via copy/paste.
 
 
-`show configuration` output":
+`show configuration` output:
 
 ```
 ...
