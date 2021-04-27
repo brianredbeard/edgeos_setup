@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
+
 doneit='/var/lib/my_packages'
 packages='sshguard rsync iftop iptraf mtr-tiny bmon'
 
